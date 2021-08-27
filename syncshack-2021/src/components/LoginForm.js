@@ -3,11 +3,14 @@ import { Typography, Link, Button, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { Link as RouterLink } from 'react-router-dom';
 
-const useStyles = makeStyles(theme => {
+const useStyles = makeStyles(theme => ({
   root: {
-
+    width: '400px',
+  },
+  form: {
+    width: '100%',
   }
-});
+}));
 
 const OutlinedInput = (props) => {
   const classes = useStyles();
@@ -31,16 +34,16 @@ export default function LoginForm({emailRef, passwordRef, onSubmit}) {
   return (
     <div className={classes.root}>
       <Typography component="h1" variant="h5">
-        Welcome to <span className={classes.myfront}>My</span>
-        <span className={classes.myRecipe}>Recipe</span>!
+        Welcome to
       </Typography>
-      <form className={classes.form} noValidate>
+      <form className={classes.form} onSubmit={onSubmit}>
         <OutlinedInput
           inputRef={emailRef}
           id="loginEmail"
           label="Email Address"
           name="email"
           autoComplete="email"
+          required
           autoFocus
         />
         <OutlinedInput
@@ -49,10 +52,11 @@ export default function LoginForm({emailRef, passwordRef, onSubmit}) {
           label="Password"
           type="password"
           id="loginPassword"
+          required
           autoComplete="password"
         />
         <Button
-          onClick={onSubmit}
+          type="submit"
           fullWidth
           variant="contained"
           color="primary"
