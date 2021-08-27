@@ -53,7 +53,7 @@ export default function Form({ formRef, onSubmit, isSignup }) {
           name="password"
           label="Password"
           type="password"
-          id="loginPassword"
+          id="password"
           required
           autoComplete="password"
         />
@@ -62,7 +62,7 @@ export default function Form({ formRef, onSubmit, isSignup }) {
             name="password"
             label="Confirm Password"
             type="password"
-            id="loginPassword"
+            id="confirmPassword"
             required
             autoComplete="password"
           />
