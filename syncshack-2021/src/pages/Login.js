@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useHistory } from "react-router";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
-import LoginForm from "../components/LoginForm";
+import Form from "../components/Form";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function Login() {
+function Login({ location }) {
   const classes = useStyles();
-  const emailRef = useRef();
-  const passwordRef = useRef();
+  const formRef = useRef();
   const history = useHistory();
+  const isSignup = location.pathname === '/signup';
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -45,12 +45,13 @@ function Login() {
   return (
     <Container className={classes.root}>
       <div className={classes.formBox}>
-        <LoginForm
-          emailRef={emailRef}
-          passwordRef={passwordRef}
+        <Form
+          formRef={formRef}
           onSubmit={onSubmit}
+          isSignup={isSignup}
         />
       </div>
+      <div className={classes.imgBox}></div>
     </Container>
   );
 }
