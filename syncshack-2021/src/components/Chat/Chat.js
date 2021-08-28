@@ -1,7 +1,25 @@
-import CancelIcon from "@material-ui/icons/Cancel";
+import ArrowForwardIosRounded from "@material-ui/icons/ArrowForwardIosRounded";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core";
 import Chat, { Bubble, useMessages } from "@chatui/core";
 import "@chatui/core/es/styles/index.less";
 import "@chatui/core/dist/index.css";
+import "../../chatui-theme.css";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    position: "absolute",
+    right: 0,
+    top: 0,
+    height: '100%',
+  },
+  btn: {
+    position: "absolute",
+    top: "5px",
+    left: 0,
+    zIndex: 10,
+  },
+}));
 
 const initialMessages = [
   {
@@ -14,6 +32,7 @@ const initialMessages = [
 ];
 
 const ChatBox = ({ open, setOpen }) => {
+  const classes = useStyles();
   const { messages, appendMsg, setTyping } = useMessages(initialMessages);
 
   const handleSend = (_, text) => {
@@ -40,7 +59,7 @@ const ChatBox = ({ open, setOpen }) => {
   const renderMessageContent = (msg) => {
     const { type, content } = msg;
 
-    if (type === 'text' && content.text.trim()) {
+    if (type === "text" && content.text.trim()) {
       return <Bubble content={content.text} />;
     }
     return null;
@@ -49,14 +68,19 @@ const ChatBox = ({ open, setOpen }) => {
   if (!open) return null;
 
   return (
-    <Chat
-      locale="en-US"
-      placeholder="Type here..."
-      navbar={{ title: "Chat Box" }}
-      messages={messages}
-      renderMessageContent={renderMessageContent}
-      onSend={handleSend}
-    />
+    <div className={classes.root}>
+      <Chat
+        locale="en-US"
+        placeholder="Type here..."
+        navbar={{ title: "Chat Box" }}
+        messages={messages}
+        renderMessageContent={renderMessageContent}
+        onSend={handleSend}
+      />
+      <Button className={classes.btn} onClick={() => setOpen("None")}>
+        <ArrowForwardIosRounded />
+      </Button>
+    </div>
   );
 };
 
