@@ -7,6 +7,7 @@ import anime from "animejs";
 import { faComments, faTasks, faStore } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from 'react-router-dom'
+import Store from "../components/Store";
 
 // import initialise from '../components/Animation/animate'
 
@@ -27,6 +28,7 @@ function Playground() {
   const [text, setText] = React.useState({ display: "None" });
   const [textContent, setTextContent] = React.useState(false)
   const dog = React.useRef();
+  const [showStore, setShowStore] = React.useState(false);
 
   const toggleChat = () => {
     if (showChat === "None") {
@@ -188,7 +190,7 @@ function Playground() {
             <FontAwesomeIcon icon={faTasks} />
             {showGoalsText && <div className={styles.buttonText}>Goals</div>}
         </div>
-        <div className={`${styles.buttonStore} ${styles.button}`}>
+        <div className={`${styles.buttonStore} ${styles.button}`} onClick={() => setShowStore(c => !c)}>
           <FontAwesomeIcon
             icon={faStore}
           />
@@ -212,6 +214,7 @@ function Playground() {
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
       {/* <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
       <img src="/static/background.png" className={styles.background} alt="background"/> */}
+      <Store show={showStore} setShow={setShowStore} />
     </div>
   );
 }
