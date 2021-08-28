@@ -93,5 +93,8 @@
 
 .cash {
     position: absolute;
-    right: 20%;
+    right: 10%;
+    top: 0.5rem;
+    font-family: 'Press Start 2P';
+    font-size: 1.5rem;
 }
