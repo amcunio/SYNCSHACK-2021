@@ -139,7 +139,7 @@ function Store({ hasBowl, setHasBowl, setShowFood, showFood, totalExp, level, se
             />
           </ListItem>
           <Divider />
-          <ListItem disabled={level < 2 || hasBowl || cash < 20} button onClick={buyBowl}>
+          <ListItem disabled={level < 2 || hasBowl || cash < 10} button onClick={buyBowl}>
             <ListItemIcon className={classes.item}>
               {level < 2 && <LockOutlinedIcon className={classes.lock} />}
               <img src="/static/bowl.png" alt="a bowl" width="80px" />
