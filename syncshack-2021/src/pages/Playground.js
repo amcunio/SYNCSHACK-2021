@@ -221,15 +221,15 @@ function Playground() {
           <div>Go Back!</div>
         </Link>
       </div>
-      {showFood && (
-        <div className={styles.food}>
-          <img src={`${hasBowl? '/static/foodInBowl.gif': '/static/food.gif'}`} alt="food" width="100px" />
-        </div>
-      )}
       {hasBowl && (
         <div className={styles.food}>
           <img src='/static/bowl.png' alt="food" width="100px" />
         </div> 
+      )}
+      {showFood && (
+        <div className={styles.food}>
+          <img src={`${hasBowl? '/static/foodInBowl.gif': '/static/food.gif'}`} alt="food" width="100px" />
+        </div>
       )}
       <GoalBox setCash={setCash} show={showGoals} setShow={setShowGoals} /> 
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
