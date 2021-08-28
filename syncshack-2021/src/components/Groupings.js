@@ -33,7 +33,7 @@ const useStyles = makeStyles({
   },
   buttonStyle: {
     margin: 10,
-    borderRadius: 50,
+    borderRadius: 5,
   }
 });
 
@@ -121,7 +121,7 @@ function Groupings(props) {
                   <h3 className="line">{x.petAge}</h3>
                 </div></Grid>
                 <Grid item><img src={location+dogs[idx+1]} className="image-spacing"/></Grid>
-                <Grid item><Button variant="contained" className={classes.buttonStyle}>
+                <Grid item><Button variant="contained" className={classes.buttonStyle} onClick={()=>setRedirectPetPlayground(true)}>
                   See my pet
                 </Button></Grid>
               </Grid>

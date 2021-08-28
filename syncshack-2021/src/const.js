@@ -67,7 +67,7 @@ export const activities2 = {
     currentActivities: [
         {
             partnerName: "Geoff",
-            skillLearning: "Writing",
+            skillLearning: "Guitar",
             skillSharing: "Piano",
             petName: "Russle",
             petAge: 1
@@ -123,6 +123,28 @@ export const skillList = {
         "Trumpet"
     ]
 }
+
+export const fullSkillList = [
+    "Basketball",
+    "Soccer",
+    "Cricket",
+    "Tennis",
+    "Rugby",
+    "French",
+    "English",
+    "Chinese",
+    "Japanese",
+    "German",
+    "Latin",
+    "Cooking",
+    "Sewing",
+    "Knitting",
+    "Puzzles",
+    "Writing",
+    "Piano/Keyboard",
+    "Guitar",
+    "Trumpet"
+]
 
 export const friendList = [
     ["Rose", "3"],
