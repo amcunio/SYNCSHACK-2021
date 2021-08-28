@@ -124,6 +124,28 @@ export const skillList = {
     ]
 }
 
+export const fullSkillList = [
+    "Basketball",
+    "Soccer",
+    "Cricket",
+    "Tennis",
+    "Rugby",
+    "French",
+    "English",
+    "Chinese",
+    "Japanese",
+    "German",
+    "Latin",
+    "Cooking",
+    "Sewing",
+    "Knitting",
+    "Puzzles",
+    "Writing",
+    "Piano/Keyboard",
+    "Guitar",
+    "Trumpet"
+]
+
 export const friendList = [
     ["Rose", "3"],
     ["Sam", "15"],
