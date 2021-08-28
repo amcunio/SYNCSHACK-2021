@@ -3,6 +3,7 @@ import { useHistory } from "react-router";
 import { Container } from "@material-ui/core";
 import { makeStyles } from "@material-ui/styles";
 import Form from "../components/Form";
+import StoryBoard from "../components/StoryBoard";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -38,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
     width: "50%",
     height: "100%",
     position: "relative",
-    zIndex: "-1",
   },
 }));
 
@@ -58,7 +58,9 @@ function Login({ location }) {
   return (
     <Container className={classes.root}>
       <div className={classes.overlay}>
-        <div className={classes.imgBox}></div>
+        <div className={classes.imgBox}>
+          <StoryBoard />
+        </div>
         <div className={classes.formBox}>
           <Form formRef={formRef} onSubmit={onSubmit} isSignup={isSignup} />
         </div>
