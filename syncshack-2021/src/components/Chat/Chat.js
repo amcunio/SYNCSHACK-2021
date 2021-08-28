@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     right: 0,
     top: 0,
-    height: '100%',
+    height: "100%",
     zIndex: 10,
   },
   btn: {
@@ -32,11 +32,25 @@ const initialMessages = [
   },
 ];
 
+const replies = [
+  {
+    type: "text",
+    content: { text: "Trying to Git it done" },
+  },
+  {
+    type: "text",
+    content: { text: "Really trying to Git it done" },
+  },
+];
+
+let next = 0;
+
 const ChatBox = ({ open, setOpen }) => {
   const classes = useStyles();
   const { messages, appendMsg, setTyping } = useMessages(initialMessages);
 
   const handleSend = (_, text) => {
+
     if (text.trim()) {
       // simulating sending
       appendMsg({
@@ -49,10 +63,7 @@ const ChatBox = ({ open, setOpen }) => {
 
       // simulating replying
       setTimeout(() => {
-        appendMsg({
-          type: "text",
-          content: { text: "Trying to Git it done" },
-        });
+        appendMsg(replies[next++]);
       }, 1000);
     }
   };
