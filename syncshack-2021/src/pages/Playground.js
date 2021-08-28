@@ -209,7 +209,7 @@ function Playground() {
           <div>Go Back!</div>
         </Link>
       </div>
-      <GoalBox setCash={setCash} show={setCash} setShow={setShowGoals} /> 
+      <GoalBox setCash={setCash} show={showGoals} setShow={setShowGoals} /> 
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
       <h1 className={styles.cash}>
         Cash: ${cash}
