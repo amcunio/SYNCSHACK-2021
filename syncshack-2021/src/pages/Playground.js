@@ -157,9 +157,7 @@ function Playground() {
       >
         Goals
       </div>
-      <Drawer open={showGoals} onClose={() => setShowGoals(!showGoals)}>
-        <Goal />
-      </Drawer>
+      <GoalBox show={showGoals} setShow={setShowGoals} />
       <div
         className={styles.chatToggle}
         onClick={toggleChat}
