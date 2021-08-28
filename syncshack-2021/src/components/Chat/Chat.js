@@ -12,12 +12,13 @@ const useStyles = makeStyles((theme) => ({
     right: 0,
     top: 0,
     height: '100%',
+    zIndex: 10,
   },
   btn: {
     position: "absolute",
     top: "5px",
     left: 0,
-    zIndex: 10,
+    zIndex: 20,
   },
 }));
 

@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => {
     brand: {
       textTransform: "uppercase",
       fontWeight: "700",
-      fontSize: "7rem",
+      fontSize: "3.5rem",
       "&$animate": {
         position: "relative",
         color: "transparent",
@@ -64,7 +64,7 @@ export default memo(function StoryBoard({ isSignup }) {
       <div className={classes.imgBox}>
         <img
           className={classes.img}
-          src={isSignup ? "/static/hotdog.gif":"/static/dogWalking.gif"}
+          src={isSignup ? "/static/hotdog.gif":"/static/dogStandingL.gif"}
           alt="cute puppy gif"
         />
       </div>
@@ -72,14 +72,14 @@ export default memo(function StoryBoard({ isSignup }) {
         <Typography
           component="span"
           variant="h1"
-          data-text="name"
+          data-text="Skillpetica"
           gutterBottom
           className={clsx(classes.brand, classes.animate)}
         >
-          name
+          Skillpetica
         </Typography>
         <Typography component="div" variant="subtitle1">
-          A web site that does something...
+          Learn new skills and watch your pet grow!
         </Typography>
       </div>
     </div>

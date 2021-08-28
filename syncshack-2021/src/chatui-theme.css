@@ -47,6 +47,8 @@
 }
 .Navbar-title {
   color: var(--gray-1);
+  font-size: 2rem;
+  font-weight: 700;
 }
 .Message.left .Bubble {
   background-color: #fff;
