@@ -44,6 +44,7 @@ function Login({ location }) {
 
   return (
     <Container className={classes.root}>
+      <div className={classes.imgBox}></div>
       <div className={classes.formBox}>
         <Form
           formRef={formRef}
@@ -51,7 +52,6 @@ function Login({ location }) {
           isSignup={isSignup}
         />
       </div>
-      <div className={classes.imgBox}></div>
     </Container>
   );
 }
