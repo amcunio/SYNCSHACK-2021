@@ -85,7 +85,9 @@
 }
 
 .pad-around {
-    padding: 50px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 25px;
 }
 
 .split-height {

@@ -21,6 +21,7 @@ const useStyles = makeStyles((theme) => ({
   dialogStyle: {
     backgroundColor: 'rgb(200, 200, 200)',
     textAlign: 'center',
+    overflow: 'hidden'
   },
   partnerDialogStyle: {
     // maxHeight: '1000px',
@@ -66,6 +67,7 @@ function MySkills(props) {
   const [confirmationOpen, setConfirmationOpen] = useState(false);
   const [skillState, setSkillState] = useState(false);
   const [skillToLearn, setSkillToLearn] = useState(null);
+  const [pannelExpanded, setPannelExpanded] = useState(false);
   const skills = skillState ? mySkills2 : mySkills;
   const friends = props.selected ? friendList2 : friendList;
 
@@ -80,6 +82,10 @@ function MySkills(props) {
     setConfirmationOpen(true);
     setSkillToLearn(null);
   }
+
+  const onAccordianClick = (panel) => (event, newExpanded) => {
+    setPannelExpanded(newExpanded ? panel : false);
+  };
 
   return (
     <div><Grid container direction="column" justifyContent="space-evenly" className={classes.content}>
@@ -115,7 +121,6 @@ function MySkills(props) {
             <p>Find me a new partner</p>
           </Button>
         </Grid>
-
 
       </Grid>
       </Grid>
@@ -176,9 +181,8 @@ function MySkills(props) {
           <Grid item><p className="no-margin"><i>Already know someone you want to be with?</i></p></Grid>
           <Grid item><TextField label="Friend's username" /></Grid>
           <Grid item>What skill do you want to learn?</Grid>
-          {/* <Grid item>{getSkillOptions()}</Grid> */}
           <Grid item>{Object.keys(skillList).map((x, idx)=>{return (
-            <Accordion>
+            <Accordion expanded={pannelExpanded===x} onChange={onAccordianClick(x)}>
               <AccordionSummary><strong>{x}</strong></AccordionSummary>
               <AccordionDetails><Grid container spacing={2}>
                 {skillList[x].map((skill, id)=>{return (
