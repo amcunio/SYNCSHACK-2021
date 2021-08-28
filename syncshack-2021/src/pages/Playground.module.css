@@ -55,6 +55,22 @@
     transform: translateX(-50%);
 }
 
+.buttonBack {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+}
+
+.backImage {
+    margin-left: 15px
+}
+
+.backLink {
+    text-decoration: none;
+    color: #56B3AA;
+    font-size: 20px
+}
+
 .dogBubble {
     position: absolute;
 }
