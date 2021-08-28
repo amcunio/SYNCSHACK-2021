@@ -5,11 +5,16 @@ import { Drawer } from "@material-ui/core";
 import Goal from "../components/Goal/Goal";
 import ChatBox from "../components/Chat/Chat";
 import anime from "animejs";
+import { faComments, faTasks, faStore } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import initialise from '../components/Animation/animate'
 
 
 
 function Playground() {
+  const [showChatText, setShowChatText] = React.useState(false);
+  const [showGoalsText, setShowGoalsText] = React.useState(false);
+  const [showStoreText, setShowStoreText] = React.useState(false);
   const [showGoals, setShowGoals] = React.useState(false);
   const [showChat, setShowChat] = React.useState("None");
   const [isWalk, setIsWalk] = React.useState(false);
@@ -34,9 +39,9 @@ function Playground() {
   const handleJump = () => {
     anime({
       targets: ".dog",
-      translateY: ["-90", "0", "-50", "0", "-20", "0"],
-      duration: 3000,
-      easing: "easeOutQuad",
+      translateY: ["0", "-90", "0"],
+      duration: 1000,
+      easing: "linear",
       loop: 1,
     });
   }
@@ -50,28 +55,46 @@ function Playground() {
       translateY: y,
       duration: 2000,
       easing: "linear",
-      complete: () => {setIsWalk(false);}
+      changeBegin: () => {setIsWalk(true);},
+      changeComplete: () => {setIsWalk(false);}
     });
   }
 
   React.useEffect(() => {
     setInterval(() => {
       walk()
-      setIsWalk(true)
     }, 5000);
   }, [])
   
   return (
     <div className={styles.page}>
-      <img src="/static/background.png" className={styles.background} alt="background"/>
-      <div
-        className={styles.goalToggle}
-        onClick={() => setShowGoals(!showGoals)}
-      >
-        Goals
+      <div className={styles.buttons}>
+        <div className={styles.button}
+          onMouseEnter={() => setShowGoalsText(true)}
+          onMouseLeave={() => setShowGoalsText(false)} onClick={() => setShowGoals(!showGoals)}
+        >
+            <FontAwesomeIcon icon={faTasks} />
+            {showGoalsText && <div className={styles.buttonText}>Goals</div>}
+        </div>
+        <div className={`${styles.buttonStore} ${styles.button}`}
+          onMouseEnter={() => setShowStoreText(true)}
+          onMouseLeave={() => setShowStoreText(false)}
+        >
+          <FontAwesomeIcon
+            icon={faStore}
+          />
+          <div className={styles.buttonText}>Store</div>
+        </div>
+        <div className={styles.button}
+          onMouseEnter={() => setShowChatText(true)}
+          onMouseLeave={() => setShowChatText(false)}
+          onClick={toggleChat} style={{display: showChat==="None" ? "block" : "None"}}>
+          <FontAwesomeIcon icon={faComments} />
+          {showChatText && <div className={styles.buttonText}>Chat</div>}
+        </div>
       </div>
+      <img src="/static/background.png" className={styles.background} alt="background"/>
       <Drawer open={showGoals} onClose={() => setShowGoals(!showGoals)}><Goal /></Drawer>
-      <div className={styles.chatToggle} onClick={toggleChat} style={{display: showChat==="None" ? "block" : "None"}}>Chat</div>
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
       <img src={isWalk ? "/static/dogWalking.gif" : "/static/dogStanding.gif"} className={`${styles.dog} dog`}  onClick={handleJump}/>
     </div>
