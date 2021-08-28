@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { display } from "@material-ui/system";
 import { faComments, faTasks, faStore } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { CallMissedSharp } from "@material-ui/icons";
 
 // import initialise from '../components/Animation/animate'
 
@@ -27,6 +28,7 @@ function Playground() {
   const [bubble, setBubble] = React.useState({ display: "None" });
   const [text, setText] = React.useState({ display: "None" });
   const [textContent, setTextContent] = React.useState(false)
+  const [cash, setCash] = React.useState(0);
   const dog = React.useRef();
 
   const toggleChat = () => {
@@ -203,10 +205,11 @@ function Playground() {
           {showChatText && <div className={styles.buttonText}>Chat</div>}
         </div>
       </div>
-      <GoalBox show={showGoals} setShow={setShowGoals} /> 
+      <GoalBox setCash={setCash} show={setCash} setShow={setShowGoals} /> 
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
-      {/* <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
-      <img src="/static/background.png" className={styles.background} alt="background"/> */}
+      <h1 className={styles.cash}>
+        Cash: ${cash}
+      </h1>
     </div>
   );
 }

@@ -2,7 +2,8 @@ import React, {useState} from 'react'
 import BackwardArrow from "@material-ui/icons/ArrowBackIosRounded";
 import { makeStyles } from "@material-ui/core/styles";
 import { List, ListItem, Checkbox, ListItemText, ListItemIcon, TextField, Button, Typography } from "@material-ui/core";
-
+import { data, theirData } from './data.js';
+import GoalModal from './GoalModal';
 
 const useStyles = makeStyles({
     container: {
@@ -29,12 +30,6 @@ const useStyles = makeStyles({
         right: 0,
         top: '5px',
     },
-    content: {
-
-    },
-    list: {
-
-    },
     completed: {
         color: "grey",
     },
@@ -48,6 +43,15 @@ const useStyles = makeStyles({
         marginLeft: "auto",
         marginRight: "auto",
         marginTop: 20
+    },
+    easy: {
+        backgroundColor: "#bdffc7"
+    },
+    medium: {
+        backgroundColor: "#fdff8f"
+    },
+    hard: {
+        backgroundColor: "#ffabab"
     }
 
 })
@@ -59,37 +63,22 @@ const genId = () => {
     return id
 }
 
-const data = [
-    {
-        id: 1,
-        goal: "Learn how to read guitar tabs",
-        score: 5
-    },
-    {
-        id: 2,
-        goal: "Learn happy birthday tune",
-        score: 10
-    },
-    {
-        id: 3, 
-        goal: "Learn Chords",
-        score: 15
-    },
-    {
-        id: 4,
-        goal: "Learn Barre Chords",
-        score: 20
-    }
-]
+const cashAdded = {
+    "easy": 10,
+    "medium": 30,
+    "hard": 50
+}
 
 const Goal = (props) => {
-    const {show, setShow} = props
+    const {setCash, show, setShow} = props
     const classes = useStyles({show});
     const [checked, setChecked] = useState([false, false, false, false]);
     const [goals, setGoals] = useState(data)
+    const [theirGoals, setTheirGoals] = useState(theirData)
     const [text, setText] = useState('')
-
+    const [showModal, setShowModal] = useState(false);
     const toggleCheckbox = (index) => {
+        setCash((prev) => prev + cashAdded[goals[index].difficulty])
         setChecked(checked.map((check, idx) => {
             if (index === idx) {
                 return !check
@@ -103,23 +92,20 @@ const Goal = (props) => {
         setShow(!show)
     }
 
-    const handleAdd = () => {
-        setGoals([...goals, {
+    const addGoal = (goal, difficulty) => {
+        setTheirGoals([...theirGoals, {
             id: genId(),
-            goal: text,
-            score: 30
+            goal: goal,
+            score: 30,
+            difficulty
         }])
-        setChecked([...checked, false])
-        setText('')
     }
-
-
 
     return (
         <div className={classes.container} >
             <div className={classes.heading} >
                 <Typography className={classes.headingText} >
-                    Goals!
+                    My Goals
                 </Typography>
                 <Button onClick={toggleButton} className={classes.button} >
                     <BackwardArrow />
@@ -132,7 +118,7 @@ const Goal = (props) => {
                         key={goal.id} 
                         onClick={() => toggleCheckbox(idx)} 
                         button 
-                        className={checked[idx] && classes.completed}
+                        className={`${classes[goal.difficulty]} ${checked[idx] && classes.completed}`}
                         disabled={checked[idx]}
                     > 
                         <ListItemIcon>
@@ -147,21 +133,44 @@ const Goal = (props) => {
                 ))}
             </List>    
             </div>
-            <TextField 
-                placeholder="Enter Goal!"
-                onChange={(e) => setText(e.target.value)} 
-                value={text}
-                className={classes.text} 
-                fullWidth
-            />
+            <div className={classes.heading} >
+                <Typography className={classes.headingText} >
+                    Their Goals
+                </Typography>
+            </div>
+            <div className={classes.content}>
+            <List className={classes.list} >
+                {theirGoals.map((goal, idx) => (
+                    <ListItem 
+                        key={goal.id} 
+                        className={classes[goal.difficulty]}
+                    > 
+                        <ListItemIcon>
+                        <Checkbox
+                            disabled
+                            edge="start"
+                            tabIndex={-1}
+                        />
+                        </ListItemIcon>
+                        <ListItemText primary={goal.goal} />
+                    </ListItem>
+                ))}
+            </List>    
+            </div>
             <Button 
                 className={classes.addButton} 
                 variant="contained" 
                 color="primary" 
-                onClick={() => handleAdd()}
+                onClick={() => setShowModal(true)}
             > 
                 Add Goal!
             </Button>
+            <div className={classes.modalContainer}>
+                <GoalModal showModal={showModal}
+                    setShowModal={setShowModal}
+                    addGoal={addGoal}
+                />
+            </div>
         </div>
     )
 };

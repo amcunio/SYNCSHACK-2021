@@ -67,3 +67,8 @@
 .button:hover {
     color: #479991;
 }
+
+.cash {
+    position: absolute;
+    right: 20%;
+}
