@@ -6,7 +6,6 @@ import ChatBox from "../components/Chat/Chat";
 import anime from "animejs";
 import { faComments, faTasks, faStore } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { CallMissedSharp } from "@material-ui/icons";
 import { Link } from 'react-router-dom'
 import Store from "../components/Store";
 
@@ -17,7 +16,7 @@ const standingR = "/static/dogStandingR.gif";
 const runningL = "/static/dogRunningL.gif";
 const runningR = "/static/dogRunningR.gif";
 var prevPos = 400;
-
+const totalExp = [10, 40, 70, 150];
 function Playground() {
   const [showChatText, setShowChatText] = React.useState(false);
   const [showGoalsText, setShowGoalsText] = React.useState(false);
@@ -31,7 +30,10 @@ function Playground() {
   const [cash, setCash] = React.useState(0);
   const dog = React.useRef();
   const [showStore, setShowStore] = React.useState(false);
-
+  const [exp, setExp] = React.useState(0);
+  const [level, setLevel] = React.useState(1);
+  const [hasBowl, setHasBowl] = React.useState(false);
+  const [showFood, setShowFood] = React.useState(false);
   const toggleChat = () => {
     if (showChat === "None") {
       setShowChat("block");
@@ -209,17 +211,31 @@ function Playground() {
       <h1 className={styles.cash}>
         Cash: ${cash}
       </h1>
+      <h1 className={styles.level}>
+        Level: {level}<br/>
+        Exp: {exp}/{totalExp[level - 1]}
+      </h1>
       <div className={styles.buttonBack} >
         <Link className={styles.backLink} to="/dashboard" >
           <img className={styles.backImage} src="/static/hotdog.gif" width="50px" height="30px" title="Go Back" />
           <div>Go Back!</div>
         </Link>
       </div>
-      <GoalBox show={showGoals} setShow={setShowGoals} /> 
+      {showFood && (
+        <div className={styles.food}>
+          <img src={`${hasBowl? '/static/foodInBowl.gif': '/static/food.gif'}`} alt="food" width="100px" />
+        </div>
+      )}
+      {hasBowl && (
+        <div className={styles.food}>
+          <img src='/static/bowl.png' alt="food" width="100px" />
+        </div> 
+      )}
+      <GoalBox setCash={setCash} show={showGoals} setShow={setShowGoals} /> 
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
-      {/* <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
-      <img src="/static/background.png" className={styles.background} alt="background"/> */}
-      <Store show={showStore} setShow={setShowStore} />
+      <Store show={showStore} setExp={setExp} setShow={setShowStore} cash={cash} setCash={setCash} level={level} setLevel={setLevel} totalExp={totalExp} setHasBowl={setHasBowl} hasBowl={hasBowl} setShowFood={setShowFood} showFood={showFood}/>
+
+      {}
     </div>
   );
 }

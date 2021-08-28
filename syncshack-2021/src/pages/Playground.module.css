@@ -72,6 +72,29 @@
     font-size: 20px
 }
 
+.buttonBack {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background-color: rgb(251, 243, 193);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.buttonBack:hover {
+    background-color:rgb(245, 238, 140);
+}
+
+.backImage {
+    margin-left: 15px
+}
+
+.backLink {
+    text-decoration: none;
+    color: #56B3AA;
+    font-size: 20px
+}
+
 .dogBubble {
     position: absolute;
 }
@@ -85,7 +108,23 @@
     color: #479991;
 }
 
-.cash {
+.cash, .level {
     position: absolute;
-    right: 20%;
+    top: 0.5rem;
+    font-family: 'Press Start 2P';
+    font-size: 1.5rem;
+}
+
+.cash {
+    right: 10%;
+}
+
+.level {
+    left: 10%;
+}
+
+.food {
+    position: absolute;
+    left: 50%;
+    bottom: 40px;
 }

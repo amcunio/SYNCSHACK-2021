@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { makeStyles } from "@material-ui/core";
 import {
   Divider,
@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
-import StarRoundedIcon from "@material-ui/icons/StarRounded";
+import { AirlineSeatLegroomExtraSharp } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   bg: {
@@ -76,26 +76,41 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
   },
-  food: {
-    position: "absolute",
-    left: "50%",
-    bottom: "40px",
-  },
 }));
 
-function Store({ show, setShow }) {
+function Store({ hasBowl, setHasBowl, setShowFood, showFood, totalExp, level, setLevel, cash, setCash, show, setShow, setExp }) {
   const classes = useStyles({ show });
-  const [score, setScore] = useState(200);
-  const [experience, setExperience] = useState(2);
-  const [showFood, setShowFood] = useState(false);
   const buyFood = () => {
-    setScore(score - 10);
+    setCash(cash - 10);
+    setExp(prev => {
+      if (prev + 10 >= totalExp[level - 1]) {
+        setLevel(level + 1);
+        return prev + 10 - totalExp[level - 1]
+      } else {
+        return prev + 10;
+      }
+    });
     setTimeout(() => {
       setShow(false);
       setShowFood(true);
     }, 500);
   };
 
+  const buyBowl = () => {
+    setCash(cash - 10);
+    setExp(prev => {
+      if (prev + 10 >= totalExp[level - 1]) {
+        setLevel(level + 1);
+        return prev + 10 - totalExp[level - 1]
+      } else {
+        return prev + 10;
+      }
+    });
+    setTimeout(() => {
+      setShow(false);
+      setHasBowl(true);
+    }, 500);
+  }
   useEffect(() => {
     let timer;
     if (showFood) {
@@ -109,46 +124,41 @@ function Store({ show, setShow }) {
   return (
     <>
       <div className={classes.bg}></div>
-      {showFood && (
-        <div className={classes.food}>
-          <img src="/static/food.gif" alt="food" width="100px" />
-        </div>
-      )}
       <div className={classes.root}>
         <Typography component="h2" variant="h3" className={classes.title}>
           Buy items for your pet
         </Typography>
         <List>
-          <ListItem button onClick={buyFood}>
+          <ListItem disabled={cash < 10} button onClick={buyFood}>
             <ListItemIcon className={classes.item}>
               <img src="/static/box.png" alt="a box of pet food" width="80px" />
             </ListItemIcon>
             <ListItemText
-              primary="Feed your dog for 10 points"
+              primary="($10) Feed your dog for 10 EXP"
               primaryTypographyProps={{ className: classes.text }}
             />
           </ListItem>
           <Divider />
-          <ListItem button disabled>
+          <ListItem disabled={level < 2 || hasBowl || cash < 20} button onClick={buyBowl}>
             <ListItemIcon className={classes.item}>
-              <LockOutlinedIcon className={classes.lock} />
+              {level < 2 && <LockOutlinedIcon className={classes.lock} />}
               <img src="/static/bowl.png" alt="a bowl" width="80px" />
             </ListItemIcon>
             <ListItemText
-              primary="A better feeding experience for 20 points"
+              primary={"($10) A dog food bowl for 20 EXP\nUnlocked at level 2"}
               primaryTypographyProps={{ className: classes.text }}
             />
           </ListItem>
         </List>
         <div className={classes.score}>
           <Typography component="span" variant="h3" className={classes.label}>
-            <StarRoundedIcon className={classes.icon} /> {score}
+            ${cash}
           </Typography>
           <Typography component="span" variant="h3" className={classes.label}>
             <Typography variant="h3" color="secondary">
               LVL&nbsp;
             </Typography>
-            {experience}
+            {level}
           </Typography>
         </div>
       </div>
