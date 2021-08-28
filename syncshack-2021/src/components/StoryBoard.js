@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => {
     brand: {
       textTransform: "uppercase",
       fontWeight: "700",
-      fontSize: "7rem",
+      fontSize: "3.5rem",
       "&$animate": {
         position: "relative",
         color: "transparent",
@@ -72,15 +72,15 @@ export default memo(function StoryBoard({ isSignup }) {
         <Typography
           component="span"
           variant="h1"
-          data-text="name"
+          data-text="Skillpetica"
           gutterBottom
           className={clsx(classes.brand, classes.animate)}
         >
-          name
+          Skillpetica
         </Typography>
-        <Typography component="div" variant="subtitle1">
+        {/* <Typography component="div" variant="subtitle1">
           A web site that does something...
-        </Typography>
+        </Typography> */}
       </div>
     </div>
   );
