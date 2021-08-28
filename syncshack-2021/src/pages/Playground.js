@@ -87,10 +87,7 @@ function Playground() {
             <FontAwesomeIcon icon={faTasks} />
             {showGoalsText && <div className={styles.buttonText}>Goals</div>}
         </div>
-        <div className={`${styles.buttonStore} ${styles.button}`}
-          onMouseEnter={() => setShowStoreText(true)}
-          onMouseLeave={() => setShowStoreText(false)}
-        >
+        <div className={`${styles.buttonStore} ${styles.button}`}>
           <FontAwesomeIcon
             icon={faStore}
           />
@@ -107,6 +104,7 @@ function Playground() {
       <GoalBox show={showGoals} setShow={setShowGoals} /> 
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
       <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
+      <img src="/static/background.png" className={styles.background} alt="background"/>
     </div>
   );
 }
