@@ -2,7 +2,6 @@ import anime from 'animejs'
 const getRandomPos = (minX, maxX, minY, maxY) => {
     const x = Math.random() * (maxX - minX) + minX;
     const y = Math.random() * (maxY - minY) + minY;
-    console.log(x, y)
     return {x, y}
 
 };
@@ -10,8 +9,6 @@ const getRandomPos = (minX, maxX, minY, maxY) => {
 const initialise = () => {
     const dog = document.querySelector('.dog')
     const width = (window.innerWidth-600)/2;
-    const height = window.innerHeight/2;
-    console.log(width, height)
     
     const jump = () => {
       anime({
