@@ -1,8 +1,7 @@
 import React from "react";
 import "../App.css";
 import styles from "./Playground.module.css";
-import { Drawer } from "@material-ui/core";
-import Goal from "../components/Goal/Goal";
+import GoalBox from "../components/Goal/Goal";
 import ChatBox from "../components/Chat/Chat";
 import anime from "animejs";
 import { faComments, faTasks, faStore } from '@fortawesome/free-solid-svg-icons'
@@ -18,7 +17,6 @@ var prevPos = 400
 function Playground() {
   const [showChatText, setShowChatText] = React.useState(false);
   const [showGoalsText, setShowGoalsText] = React.useState(false);
-  const [showStoreText, setShowStoreText] = React.useState(false);
   const [showGoals, setShowGoals] = React.useState(false);
   const [showChat, setShowChat] = React.useState("None");
   const [isWalk, setIsWalk] = React.useState(false);
@@ -106,8 +104,7 @@ function Playground() {
           {showChatText && <div className={styles.buttonText}>Chat</div>}
         </div>
       </div>
-      <img src="/static/background.png" className={styles.background} alt="background"/>
-      <Drawer open={showGoals} onClose={() => setShowGoals(!showGoals)}><Goal /></Drawer>
+      <GoalBox show={showGoals} setShow={setShowGoals} /> 
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
       <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
     </div>
