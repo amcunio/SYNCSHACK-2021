@@ -40,3 +40,9 @@
     padding-top: 30px;
     font-size: 20px;
 }
+
+.dog {
+    position: absolute;
+    top: 60%;
+    left: 40%;
+}
