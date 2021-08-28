@@ -18,6 +18,13 @@ function App() {
         />
         <Route
           exact
+          path="/signup"
+          render={(props) => {
+            return <Login {...props} />;
+          }}
+        />
+        <Route
+          exact
           path="/dashboard"
           render={(props) => {
             return <Dashboard {...props} />;
