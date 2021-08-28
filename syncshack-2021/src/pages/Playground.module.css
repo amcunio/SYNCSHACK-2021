@@ -55,6 +55,29 @@
     transform: translateX(-50%);
 }
 
+.buttonBack {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    background-color: rgb(251, 243, 193);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+.buttonBack:hover {
+    background-color:rgb(245, 238, 140);
+}
+
+.backImage {
+    margin-left: 15px
+}
+
+.backLink {
+    text-decoration: none;
+    color: #56B3AA;
+    font-size: 20px
+}
+
 .dogBubble {
     position: absolute;
 }
