@@ -64,7 +64,7 @@ export default memo(function StoryBoard({ isSignup }) {
       <div className={classes.imgBox}>
         <img
           className={classes.img}
-          src={isSignup ? "/static/hotdog.gif":"/static/dogWalking.gif"}
+          src={isSignup ? "/static/hotdog.gif":"/static/dogStandingL.gif"}
           alt="cute puppy gif"
         />
       </div>
