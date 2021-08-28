@@ -76,7 +76,7 @@ function Dashboard() {
             </Grid>
           </Toolbar>
         </AppBar>
-        <Grid container justifyContent="space-between">
+        <Grid container justifyContent="space-between" className="page-width">
           <Grid item className="left-pane">
             <Groupings selected={selected}/>
           </Grid>

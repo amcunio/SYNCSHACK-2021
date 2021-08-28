@@ -114,7 +114,8 @@ export const skillList = {
         "Cooking",
         "Sewing",
         "Knitting",
-        "Puzzles"
+        "Puzzles",
+        "Writing"
     ],
     'Musical Instruments': [
         "Piano/Keyboard",

@@ -15,7 +15,7 @@ const useStyles = makeStyles({
     padding: 8,
     margin: 10,
     textAlign: 'center',
-    height: '400px'
+    height: '300px'
   },
   cardStyleCompleted: {
     backgroundColor: 'rgba(150, 150, 150, 0.8)',
@@ -42,7 +42,7 @@ function Groupings(props) {
   let currentActvities = props.selected ? activities2 : activities;
   const [redirectPetPlayground, setRedirectPetPlayground] = useState(false);
   const location = '/pets/'
-  const dogs = ['dog.gif', 'dog-bw.gif', 'hotdog.gif', 'dog-crown.gif'];
+  const dogs = ['dog.gif', 'dog-bw.gif', 'hotdog.gif', 'dog-crown.gif', 'dog-bw-crown.gif'];
 
   function renderRedirect() {
     if (redirectPetPlayground) {
@@ -57,8 +57,10 @@ function Groupings(props) {
       return location+dogs[1];
     } else if (level === 3) {
       return location+dogs[2];
-    } else {
+    } else if (level === 4) {
       return location+dogs[3];
+    } else {
+      return location+dogs[4];
     }
   }
 
@@ -118,7 +120,7 @@ function Groupings(props) {
                   <p className="line"> to level </p>
                   <h3 className="line">{x.petAge}</h3>
                 </div></Grid>
-                <Grid item><img src={chooseDog(x.petAge)} className="image-spacing"/></Grid>
+                <Grid item><img src={location+dogs[idx+1]} className="image-spacing"/></Grid>
                 <Grid item><Button variant="contained" className={classes.buttonStyle}>
                   See my pet
                 </Button></Grid>

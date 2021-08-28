@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
   partnerDialogStyle: {
     // maxHeight: '1000px',
     // minWidth: '800px',
+    overflow: 'hidden'
   },
   buttonStyle: {
     borderRadius: 50,
