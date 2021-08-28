@@ -101,7 +101,7 @@ function Playground() {
       },
     });
     anime({
-      targets: ".bubble",
+      targets: ".dogBubble",
       translateX: x,
       translateY: y,
       duration: 2000,
