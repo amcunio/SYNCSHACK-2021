@@ -69,7 +69,7 @@ function Playground() {
           ...text,
           display: "block",
           top: top + 47,
-          left: left + 54,
+          left: left + 55,
         });
 
         setTimeout(() => {
@@ -177,7 +177,7 @@ function Playground() {
         ) : (
           <div>
             hello
-            <br /> Alex
+            <br /> Ian
           </div>
         )}
       </div>
