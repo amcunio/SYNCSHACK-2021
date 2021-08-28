@@ -28,15 +28,19 @@ function Playground() {
   }
 
   const getRandomPos = (minX, maxX, minY, maxY) => {
-    const x = Math.random() * (maxX - minX) + minX;
+    var x = Math.random() * (maxX - minX) + minX;
     const y = Math.random() * (maxY - minY) + minY;
 
+    if (prevPos === 400) {
+      x = -100
+    }
     if (prevPos < x) {
       setIsRight(true)
     } else {
       setIsRight(false)
     }
     prevPos = x
+    console.log(x)
     return { x, y };
   };
 
