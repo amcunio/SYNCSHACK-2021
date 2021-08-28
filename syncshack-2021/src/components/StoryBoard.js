@@ -78,9 +78,9 @@ export default memo(function StoryBoard({ isSignup }) {
         >
           Skillpetica
         </Typography>
-        {/* <Typography component="div" variant="subtitle1">
-          A web site that does something...
-        </Typography> */}
+        <Typography component="div" variant="subtitle1">
+          Learn new skills and watch your pet grow!
+        </Typography>
       </div>
     </div>
   );
