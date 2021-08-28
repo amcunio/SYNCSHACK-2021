@@ -4,11 +4,11 @@ import styles from "./Playground.module.css";
 import GoalBox from "../components/Goal/Goal";
 import ChatBox from "../components/Chat/Chat";
 import anime from "animejs";
-import { motion } from "framer-motion";
-import { display } from "@material-ui/system";
 import { faComments, faTasks, faStore } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { CallMissedSharp } from "@material-ui/icons";
+import { Link } from 'react-router-dom'
+import Store from "../components/Store";
 
 // import initialise from '../components/Animation/animate'
 
@@ -30,6 +30,7 @@ function Playground() {
   const [textContent, setTextContent] = React.useState(false)
   const [cash, setCash] = React.useState(0);
   const dog = React.useRef();
+  const [showStore, setShowStore] = React.useState(false);
 
   const toggleChat = () => {
     if (showChat === "None") {
@@ -60,7 +61,7 @@ function Playground() {
     anime({
       targets: ".dog",
       translateY: ["-90", "0", "-50", "0", "-20", "0"],
-      duration: 3000,
+      duration: 1500,
       easing: "easeOutQuad",
       loop: 1,
       complete: () => {
@@ -179,7 +180,7 @@ function Playground() {
         ) : (
           <div>
             hello
-            <br /> Ian
+            <br /> Elon
           </div>
         )}
       </div>
@@ -191,7 +192,7 @@ function Playground() {
             <FontAwesomeIcon icon={faTasks} />
             {showGoalsText && <div className={styles.buttonText}>Goals</div>}
         </div>
-        <div className={`${styles.buttonStore} ${styles.button}`}>
+        <div className={`${styles.buttonStore} ${styles.button}`} onClick={() => setShowStore(c => !c)}>
           <FontAwesomeIcon
             icon={faStore}
           />
@@ -205,11 +206,20 @@ function Playground() {
           {showChatText && <div className={styles.buttonText}>Chat</div>}
         </div>
       </div>
-      <GoalBox setCash={setCash} show={setCash} setShow={setShowGoals} /> 
-      <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
       <h1 className={styles.cash}>
         Cash: ${cash}
       </h1>
+      <div className={styles.buttonBack} >
+        <Link className={styles.backLink} to="/dashboard" >
+          <img className={styles.backImage} src="/static/hotdog.gif" width="50px" height="30px" title="Go Back" />
+          <div>Go Back!</div>
+        </Link>
+      </div>
+      <GoalBox show={showGoals} setShow={setShowGoals} /> 
+      <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
+      {/* <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
+      <img src="/static/background.png" className={styles.background} alt="background"/> */}
+      <Store show={showStore} setShow={setShowStore} />
     </div>
   );
 }

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import { Chip, Typography, Link, Button, TextField } from "@material-ui/core";
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from "@material-ui/styles";
 import { Link as RouterLink } from "react-router-dom";
+
+import { fullSkillList } from "../const";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -11,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   input: {
-    borderRadius: '20px',
+    borderRadius: '5px',
   },
   title: {
     textAlign: "center",
@@ -23,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     marginTop: '1rem',
     padding: '10px',
-    borderRadius: '15px',
+    borderRadius: '5px',
     display: 'block',
     width: '200px',
     margin: '0 auto 10px',
@@ -111,7 +114,7 @@ export default function Form({ formRef, onSubmit, isSignup }) {
               id="confirmPassword"
               autoComplete="password"
             />
-            <OutlinedInput
+            {/* <OutlinedInput
               name="mySkills"
               label="My Skills"
               type="text"
@@ -120,32 +123,59 @@ export default function Form({ formRef, onSubmit, isSignup }) {
               onChange={(e) => setSkill(e.target.value)}
               onKeyDown={addSkill}
               autoComplete="text"
+            /> */}
+            <Autocomplete
+              multiple
+              options={fullSkillList}
+              className={classes.input}
+              renderInput={(params) => (
+                <OutlinedInput
+                  name="mySkills"
+                  label="My Skills"
+                  type="text"
+                  id="mySkills"
+                  // value={skill}
+                  onChange={(e) => setSkill(e.target.value)}
+                  onKeyDown={addSkill}
+                  autoComplete="text"
+                  {...params}
+                />
+              )}
             />
-            {skillList && skillList.length > 0 && (
+            {/* {skillList && skillList.length > 0 && (
               skillList.map((el, i) => <Chip className={classes.chip} size='small' variant="outlined" key={i} color="primary" label={el} />)
-            )}
-            <OutlinedInput
-              name="wishList"
-              label="I want to practice"
-              type="text"
-              id="wishList"
-              value={wish}
-              onChange={(e) => setWish(e.target.value)}
-              onKeyDown={addWish}
-              autoComplete="text"
+            )} */}
+            <Autocomplete
+              options={fullSkillList}
+              className={classes.input}
+              renderInput={(params) => (
+                <OutlinedInput
+                  name="wishList"
+                  label="I want to practice"
+                  type="text"
+                  id="wishList"
+                  value={wish}
+                  onChange={(e) => setWish(e.target.value)}
+                  onKeyDown={addWish}
+                  autoComplete="text"
+                  {...params}
+                />
+              )}
             />
+            
             {wishList && wishList.length > 0 && 
               wishList.map((el, i) => <Chip className={classes.chip} size='small' variant="outlined" key={i} color="primary" label={el} />)
             }
           </>
         )}
         <Button
-          type="submit"
+          // type="submit"
           variant="contained"
           color="primary"
           className={classes.submit}
+          onClick={onSubmit}
         >
-          {isSignup ? "Sign Up" : "Login In"}
+          {isSignup ? "Sign Up" : "Login"}
         </Button>
         <Link
           component={RouterLink}

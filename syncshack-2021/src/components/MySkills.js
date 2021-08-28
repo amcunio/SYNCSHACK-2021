@@ -29,11 +29,11 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden'
   },
   buttonStyle: {
-    borderRadius: 50,
+    borderRadius: 5,
     backgroundColor: '#7B56B3',
   },
   partnerButtonStyle: {
-    borderRadius: 50,
+    borderRadius: 5,
   },
   friendCardStyle: {
     width: "150px",
