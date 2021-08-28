@@ -145,7 +145,7 @@ function Store({ hasBowl, setHasBowl, setShowFood, showFood, totalExp, level, se
               <img src="/static/bowl.png" alt="a bowl" width="80px" />
             </ListItemIcon>
             <ListItemText
-              primary={"($10) A dog food bowl for 20 EXP\nUnlocked at level 2"}
+              primary={"($10) A dog food bowl for 10 EXP\nUnlocked at level 2"}
               primaryTypographyProps={{ className: classes.text }}
             />
           </ListItem>
