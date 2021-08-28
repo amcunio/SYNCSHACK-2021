@@ -2,6 +2,7 @@
     height: 100%;
     width: 100%;
     display: flex;
+    cursor: url("./cursor3.png"), grab
     /* background-image: url('./bg.jpeg');
     
     background-repeat: no-repeat;
@@ -45,4 +46,14 @@
     position: absolute;
     top: 60%;
     left: 400px;
+}
+
+.bubble {
+    position: absolute;
+}
+
+.text {
+    position: absolute;
+    font-size: 16px;
+    font-family: 'Press Start 2P';
 }
