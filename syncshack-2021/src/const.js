@@ -67,7 +67,7 @@ export const activities2 = {
     currentActivities: [
         {
             partnerName: "Geoff",
-            skillLearning: "Writing",
+            skillLearning: "Guitar",
             skillSharing: "Piano",
             petName: "Russle",
             petAge: 1

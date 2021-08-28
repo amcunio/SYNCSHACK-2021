@@ -24,7 +24,11 @@ const useStyles = makeStyles((theme) => {
     textBox: {
       textAlign: "center",
     },
+    testAlign: {
+      marginLeft: "-45px",
+    },
     brand: {
+      marginLeft: "-30px",
       textTransform: "uppercase",
       fontWeight: "700",
       fontSize: "3.5rem",
@@ -78,7 +82,7 @@ export default memo(function StoryBoard({ isSignup }) {
         >
           Skillpetica
         </Typography>
-        <Typography component="div" variant="subtitle1">
+        <Typography component="div" variant="subtitle1" className={classes.testAlign}>
           Learn new skills and watch your pet grow!
         </Typography>
       </div>
