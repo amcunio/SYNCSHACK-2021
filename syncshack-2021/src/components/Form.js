@@ -10,6 +10,9 @@ const useStyles = makeStyles((theme) => ({
   form: {
     width: "100%",
   },
+  input: {
+    borderRadius: '20px',
+  },
   title: {
     textAlign: "center",
     fontWeight: 700,
@@ -19,6 +22,11 @@ const useStyles = makeStyles((theme) => ({
   },
   submit: {
     marginTop: '1rem',
+    padding: '10px',
+    borderRadius: '15px',
+    display: 'block',
+    width: '200px',
+    margin: '0 auto 10px',
   }
 }));
 
@@ -27,7 +35,7 @@ const OutlinedInput = (props) => {
 
   return (
     <TextField
-      className={classes.input}
+      InputProps={{classes: {root: classes.input}}}
       variant="outlined"
       margin="normal"
       color="primary"
@@ -133,7 +141,6 @@ export default function Form({ formRef, onSubmit, isSignup }) {
         )}
         <Button
           type="submit"
-          fullWidth
           variant="contained"
           color="primary"
           className={classes.submit}
