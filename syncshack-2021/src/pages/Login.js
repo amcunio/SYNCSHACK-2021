@@ -59,7 +59,7 @@ function Login({ location }) {
     <div className={classes.root}>
       <div className={classes.overlay}>
         <div className={classes.imgBox}>
-          <StoryBoard />
+          <StoryBoard isSignup={isSignup} />
         </div>
         <div className={classes.formBox}>
           <Form formRef={formRef} onSubmit={onSubmit} isSignup={isSignup} />
