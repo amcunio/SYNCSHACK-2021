@@ -57,9 +57,9 @@ function Playground() {
   const handleJump = () => {
     anime({
       targets: ".dog",
-      translateY: ["0", "-90", "0"],
-      duration: 1000,
-      easing: "linear",
+      translateY: ["-90", "0", "-50", "0", "-20", "0"],
+      duration: 3000,
+      easing: "easeOutQuad",
       loop: 1,
       complete: () => {
         const top = dog.current.offsetTop - 200;
@@ -69,7 +69,7 @@ function Playground() {
           ...text,
           display: "block",
           top: top + 47,
-          left: left + 63,
+          left: left + 54,
         });
 
         setTimeout(() => {
@@ -78,13 +78,7 @@ function Playground() {
         }, 3000);
       },
     });
-    anime({
-      targets: ".dogBubble",
-      translateY: ["-90", "0", "-50", "0", "-20", "0"],
-      duration: 3000,
-      easing: "easeOutQuad",
-      loop: 1,
-    });
+    
   };
 
   const walk = () => {
@@ -101,7 +95,7 @@ function Playground() {
       },
     });
     anime({
-      targets: ".dogBubble",
+      targets: ".bubble",
       translateX: x,
       translateY: y,
       duration: 2000,
@@ -113,7 +107,7 @@ function Playground() {
       changeComplete: () => {setIsWalk(false);}
     });
     anime({
-      targets: ".dogText",
+      targets: ".text",
       translateX: x,
       translateY: y,
       duration: 2000,
@@ -125,8 +119,8 @@ function Playground() {
   };
 
   React.useEffect(() => {
-    setBubble({ ...bubble, display: "block", top: 250, left: 400 });
-    setText({ ...text, display: "block", top: 297, left: 400 + 63 });
+    setBubble({ ...bubble, display: "block", top: 250, left: 500 });
+    setText({ ...text, display: "block", top: 297, left: 500 + 63 });
 
 
     setTimeout(() => {
