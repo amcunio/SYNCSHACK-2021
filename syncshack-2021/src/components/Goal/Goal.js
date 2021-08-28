@@ -11,23 +11,23 @@ const useStyles = makeStyles({
         width: 300,
         height: "100%",
         top: 0,
-        backgroundColor: "white",
         zIndex: 10,
         backgroundColor: "#eaf3f5"
     },
     heading: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        marginTop: 5,
-        backgroundColor: "white"
+        backgroundColor: "white",
+        position: 'relative',
     },
     headingText: {
         fontWeight: 700,
-        marginLeft: 60
+        fontSize: '2rem',
+        display: "block",
+        textAlign: 'center'
     },
     button: {
-
+        position: 'absolute',
+        right: 0,
+        top: '5px',
     },
     content: {
 
@@ -39,8 +39,9 @@ const useStyles = makeStyles({
         color: "grey",
     },
     text: {
-        display: "grid",
-        placeItems: "center"
+        width: '80%',
+        display: "block",
+        margin: '0 auto',
     },
     addButton: {
         display: "block",
@@ -117,7 +118,7 @@ const Goal = (props) => {
     return (
         <div className={classes.container} >
             <div className={classes.heading} >
-                <Typography variant="h3" className={classes.headingText} >
+                <Typography className={classes.headingText} >
                     Goals!
                 </Typography>
                 <Button onClick={toggleButton} className={classes.button} >
@@ -151,6 +152,7 @@ const Goal = (props) => {
                 onChange={(e) => setText(e.target.value)} 
                 value={text}
                 className={classes.text} 
+                fullWidth
             />
             <Button 
                 className={classes.addButton} 
