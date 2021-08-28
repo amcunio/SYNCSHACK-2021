@@ -63,7 +63,7 @@ const ChatBox = ({ open, setOpen }) => {
 
       // simulating replying
       setTimeout(() => {
-        appendMsg(replies[next++]);
+        appendMsg(replies[next > 1 ? 1: next++]);
       }, 1000);
     }
   };
