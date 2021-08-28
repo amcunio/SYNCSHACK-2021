@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => {
     imgBox: {
       width: "100%",
       textAlign: "center",
-      margin: "80px 0",
+      margin: "60px 0",
     },
     img: {
       userSelect: "none",
@@ -27,7 +27,7 @@ const useStyles = makeStyles((theme) => {
     brand: {
       textTransform: "uppercase",
       fontWeight: "700",
-      fontSize: "7vw",
+      fontSize: "7rem",
       "&$animate": {
         position: "relative",
         color: "transparent",
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => {
   };
 });
 
-export default memo(function StoryBoard() {
+export default memo(function StoryBoard({ isSignup }) {
   const classes = useStyles();
 
   return (
@@ -64,7 +64,7 @@ export default memo(function StoryBoard() {
       <div className={classes.imgBox}>
         <img
           className={classes.img}
-          src="/static/dogWalking.gif"
+          src={"/static/dogWalking.gif"}
           alt="cute puppy gif"
         />
       </div>
@@ -78,7 +78,7 @@ export default memo(function StoryBoard() {
         >
           name
         </Typography>
-        <Typography component="div" variant="subtitle">
+        <Typography component="div" variant="subtitle1">
           A web site that does something...
         </Typography>
       </div>
