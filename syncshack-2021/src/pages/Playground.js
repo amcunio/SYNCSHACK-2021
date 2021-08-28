@@ -79,7 +79,7 @@ function Playground() {
       },
     });
     anime({
-      targets: ".bubble",
+      targets: ".dogBubble",
       translateY: ["-90", "0", "-50", "0", "-20", "0"],
       duration: 3000,
       easing: "easeOutQuad",
@@ -113,7 +113,7 @@ function Playground() {
       changeComplete: () => {setIsWalk(false);}
     });
     anime({
-      targets: ".text",
+      targets: ".dogText",
       translateX: x,
       translateY: y,
       duration: 2000,
@@ -151,21 +151,6 @@ function Playground() {
         className={styles.background}
         alt="background"
       />
-      <div
-        className={styles.goalToggle}
-        onClick={() => setShowGoals(!showGoals)}
-      >
-        Goals
-      </div>
-      <GoalBox show={showGoals} setShow={setShowGoals} />
-      <div
-        className={styles.chatToggle}
-        onClick={toggleChat}
-        style={{ display: showChat === "None" ? "block" : "None" }}
-      >
-        Chat
-      </div>
-      <ChatBox open={showChat !== "None"} setOpen={setShowChat} />
 
       <img
         src={
@@ -185,10 +170,10 @@ function Playground() {
       <img
         src="/static/bubble.png"
         alt="speech bubble"
-        className={`${styles.bubble} bubble`}
+        className={`${styles.dogBubble} bubble`}
         style={bubble}
       />
-      <div className={`${styles.text} text`} style={text}>
+      <div className={`${styles.dogText} text`} style={text}>
         {textContent ? (
           <div>
             woof
@@ -226,8 +211,8 @@ function Playground() {
       </div>
       <GoalBox show={showGoals} setShow={setShowGoals} /> 
       <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
-      <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
-      <img src="/static/background.png" className={styles.background} alt="background"/>
+      {/* <img src={isRight ? (isWalk ? runningR : standingR) : (isWalk ? runningL : standingL)} className={`${styles.dog} dog`}  onClick={handleJump} alt="pet"/>
+      <img src="/static/background.png" className={styles.background} alt="background"/> */}
     </div>
   );
 }
