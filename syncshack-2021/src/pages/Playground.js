@@ -95,7 +95,7 @@ function Playground() {
       },
     });
     anime({
-      targets: ".bubble",
+      targets: ".dogBubble",
       translateX: x,
       translateY: y,
       duration: 2000,
@@ -107,7 +107,7 @@ function Playground() {
       changeComplete: () => {setIsWalk(false);}
     });
     anime({
-      targets: ".text",
+      targets: ".dogText",
       translateX: x,
       translateY: y,
       duration: 2000,
@@ -164,10 +164,10 @@ function Playground() {
       <img
         src="/static/bubble.png"
         alt="speech bubble"
-        className={`${styles.dogBubble} bubble`}
+        className={`${styles.dogBubble} dogBubble`}
         style={bubble}
       />
-      <div className={`${styles.dogText} text`} style={text}>
+      <div className={`${styles.dogText} dogText`} style={text}>
         {textContent ? (
           <div>
             woof

@@ -7,7 +7,7 @@ import { List, ListItem, Checkbox, ListItemText, ListItemIcon, TextField, Button
 const useStyles = makeStyles({
     container: {
         position: 'absolute',
-        left: props => props.show ? 0 : "100vw",
+        left: props => props.show ? 0 : "-100vw",
         width: 300,
         height: "100%",
         top: 0,
