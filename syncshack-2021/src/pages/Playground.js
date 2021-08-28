@@ -3,7 +3,7 @@ import "../App.css";
 import styles from "./Playground.module.css";
 import { Drawer } from "@material-ui/core";
 import Goal from "../components/Goal/Goal";
-import Chat from "../components/Chat/Chat";
+import ChatBox from "../components/Chat/Chat";
 import anime from "animejs";
 // import initialise from '../components/Animation/animate'
 
@@ -72,7 +72,7 @@ function Playground() {
       </div>
       <Drawer open={showGoals} onClose={() => setShowGoals(!showGoals)}><Goal /></Drawer>
       <div className={styles.chatToggle} onClick={toggleChat} style={{display: showChat==="None" ? "block" : "None"}}>Chat</div>
-      <Chat open={showChat} setOpen={setShowChat} />
+      <ChatBox open={showChat !== 'None'} setOpen={setShowChat} />
       <img src={isWalk ? "/static/dogWalking.gif" : "/static/dogStanding.gif"} className={`${styles.dog} dog`}  onClick={handleJump}/>
     </div>
   );
