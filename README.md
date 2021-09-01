@@ -1,6 +1,6 @@
 # SYNCSHACK-2021
 
-This app is created with `create-react-app`. To run the project:
+This web application is created with `create-react-app`. To run the project:
 
 ```
 git clone https://github.com/amcunio/SYNCSHACK-2021.git
